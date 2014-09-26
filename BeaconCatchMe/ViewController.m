@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "CBUUID_Ext.h"
 
 @interface ViewController ()
 
@@ -17,19 +18,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.myMajorLabel.text = [NSString stringWithFormat:@"Major: %@", self.majorNumber];
-    self.myMinorLabel.text = [NSString stringWithFormat:@"Minor: %@", self.minorNumber];
+    [self startDetectingBeacons];
     
     self.identifier = @"52495334-5696-4DAE-BEC7-98D44A30FFDB";
     
-    self.meBeaconData = @{CBAdvertisementDataLocalNameKey:@"my-peripheral", CBAdvertisementDataServiceUUIDsKey:@[[CBUUID UUIDWithString:self.identifier]]};
-    
-    self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil options:nil];
-    
-    [self startDetectingBeacons];
-    
     // Tell location manager to start monitoring for the beacon region
     
+}
+
+- (IBAction)startBroadcasting:(id)sender {
+    
+    if (!self.peripheralManager) {
+        self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
+    }
 }
 
 -(void)peripheralManagerDidUpdateState:(CBPeripheralManager*)peripheral
@@ -40,7 +41,7 @@
         self.statusLabel.text = @"Broadcasting!";
         
         // Start broadcasting
-        [self.peripheralManager startAdvertising:self.meBeaconData];
+        [self startAdvertising];
     }
     else if (peripheral.state == CBPeripheralManagerStatePoweredOff)
     {
@@ -56,6 +57,18 @@
     }
 }
 
+- (void)startAdvertising
+{
+    self.identifier = self.uuidTextField.text;
+    self.peripheralName = self.peripferalNameTextField.text;
+    
+    self.advertisingData = @{CBAdvertisementDataLocalNameKey:self.peripheralName, CBAdvertisementDataServiceUUIDsKey:@[[CBUUID UUIDWithString:self.identifier]]};
+    
+    // Start advertising over BLE
+    [self.peripheralManager startAdvertising:self.advertisingData];
+    
+}
+
 - (void)startDetectingBeacons
 {
     if (!self.centralManager) self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];
@@ -66,9 +79,9 @@
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral
      advertisementData:(NSDictionary *)advertisementData RSSI:(NSNumber *)RSSI
 {
-    NSLog(@"UUID: %@", [peripheral identifier]);
-    NSLog(@"UUID: %@", [peripheral name]);
-    NSLog(@"RSSI: %d", [RSSI intValue]);
+    //if([[peripheral.identifier UUIDString] isEqualToString:@"52495334-5696-4DAE-BEC7-98D44A30FFDB"]){
+         NSLog(@"did discover peripheral: %@, name: %@, data: %@, %1.2f", [peripheral.identifier UUIDString], peripheral.name, advertisementData, [RSSI floatValue]);
+    //}
 }
 
 - (void)centralManagerDidUpdateState:(CBCentralManager *)central
@@ -86,7 +99,8 @@
     NSDictionary *scanOptions = @{CBCentralManagerScanOptionAllowDuplicatesKey:@(YES)};
     
     
-    [self.centralManager scanForPeripheralsWithServices:@[self.identifier] options:scanOptions];
+    //[self.centralManager scanForPeripheralsWithServices:@[self.identifier] options:scanOptions];
+    [self.centralManager scanForPeripheralsWithServices:nil options:scanOptions];
 }
 
 /*

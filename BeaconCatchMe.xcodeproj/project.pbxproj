@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27B7D4B719D5D77400E16E2D /* CBUUID_Ext.m in Sources */ = {isa = PBXBuildFile; fileRef = 27B7D4B619D5D77400E16E2D /* CBUUID_Ext.m */; };
 		AC10E5FC19D1AB8D004C7695 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AC10E5FB19D1AB8D004C7695 /* main.m */; };
 		AC10E5FF19D1AB8D004C7695 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AC10E5FE19D1AB8D004C7695 /* AppDelegate.m */; };
 		AC10E60219D1AB8D004C7695 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC10E60119D1AB8D004C7695 /* ViewController.m */; };
@@ -14,7 +15,6 @@
 		AC10E60719D1AB8D004C7695 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC10E60619D1AB8D004C7695 /* Images.xcassets */; };
 		AC10E60A19D1AB8D004C7695 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC10E60819D1AB8D004C7695 /* LaunchScreen.xib */; };
 		AC10E61619D1AB8D004C7695 /* BeaconCatchMeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AC10E61519D1AB8D004C7695 /* BeaconCatchMeTests.m */; };
-		AC74477319D1AF28009179BB /* StartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AC74477219D1AF28009179BB /* StartViewController.m */; };
 		AC74477519D1B7E1009179BB /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC74477419D1B7E1009179BB /* CoreBluetooth.framework */; };
 		AC74477719D1B7EC009179BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC74477619D1B7EC009179BB /* Foundation.framework */; };
 		AC74477919D1B7F6009179BB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC74477819D1B7F6009179BB /* UIKit.framework */; };
@@ -33,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		27B7D4B419D5D74F00E16E2D /* CBUUID_Ext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBUUID_Ext.h; sourceTree = "<group>"; };
+		27B7D4B619D5D77400E16E2D /* CBUUID_Ext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBUUID_Ext.m; sourceTree = "<group>"; };
 		AC10E5F619D1AB8D004C7695 /* BeaconCatchMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconCatchMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC10E5FA19D1AB8D004C7695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC10E5FB19D1AB8D004C7695 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -46,8 +48,6 @@
 		AC10E60F19D1AB8D004C7695 /* BeaconCatchMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeaconCatchMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC10E61419D1AB8D004C7695 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC10E61519D1AB8D004C7695 /* BeaconCatchMeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeaconCatchMeTests.m; sourceTree = "<group>"; };
-		AC74477119D1AF28009179BB /* StartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartViewController.h; sourceTree = "<group>"; };
-		AC74477219D1AF28009179BB /* StartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartViewController.m; sourceTree = "<group>"; };
 		AC74477419D1B7E1009179BB /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		AC74477619D1B7EC009179BB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AC74477819D1B7F6009179BB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -109,11 +109,11 @@
 				AC10E60019D1AB8D004C7695 /* ViewController.h */,
 				AC10E60119D1AB8D004C7695 /* ViewController.m */,
 				AC10E60319D1AB8D004C7695 /* Main.storyboard */,
-				AC74477119D1AF28009179BB /* StartViewController.h */,
-				AC74477219D1AF28009179BB /* StartViewController.m */,
 				AC10E60619D1AB8D004C7695 /* Images.xcassets */,
 				AC10E60819D1AB8D004C7695 /* LaunchScreen.xib */,
 				AC10E5F919D1AB8D004C7695 /* Supporting Files */,
+				27B7D4B419D5D74F00E16E2D /* CBUUID_Ext.h */,
+				27B7D4B619D5D77400E16E2D /* CBUUID_Ext.m */,
 			);
 			path = BeaconCatchMe;
 			sourceTree = "<group>";
@@ -251,7 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC10E60219D1AB8D004C7695 /* ViewController.m in Sources */,
-				AC74477319D1AF28009179BB /* StartViewController.m in Sources */,
+				27B7D4B719D5D77400E16E2D /* CBUUID_Ext.m in Sources */,
 				AC10E5FF19D1AB8D004C7695 /* AppDelegate.m in Sources */,
 				AC10E5FC19D1AB8D004C7695 /* main.m in Sources */,
 			);
